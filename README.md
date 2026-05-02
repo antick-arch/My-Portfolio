@@ -114,6 +114,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 **Antick Chandra Kuri**
 - GitHub: [@antick-arch](https://github.com/antick-arch)
-- Portfolio: [Elite Developer Portfolio](https://github.com/antick-arch/My-Portfolio)
+- Portfolio: [Elite Developer Portfolio](https://antick-chandra-kuri.netlify.app/)
 
 *"Built with passion and consistency"*
