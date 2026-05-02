@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,12 +21,23 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const location = useLocation();
+
   const navLinks = [
+    { name: 'Home', href: '/', isRouter: true },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
     { name: 'Services', href: '#services' },
+    { name: 'About', href: '/about', isRouter: true },
     { name: 'Contact', href: '#contact' },
   ];
+
+  const getHref = (href) => {
+    if (href.startsWith('#') && location.pathname !== '/') {
+      return `/${href}`;
+    }
+    return href;
+  };
 
   return (
     <>
@@ -46,19 +58,32 @@ const Navbar = () => {
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8 lg:gap-10">
             {navLinks.map((link, index) => (
-              <motion.a
-                key={link.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 + 0.2 }}
-                className="text-slate-400 font-medium hover:text-white transition-all duration-300 font-manrope relative group text-sm lg:text-base"
-                href={link.href}
-              >
-                {link.name}
-                <motion.span
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-container group-hover:w-full transition-all duration-300"
-                />
-              </motion.a>
+              link.isRouter ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-slate-400 font-medium hover:text-white transition-all duration-300 font-manrope relative group text-sm lg:text-base"
+                >
+                  {link.name}
+                  <motion.span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-container group-hover:w-full transition-all duration-300"
+                  />
+                </Link>
+              ) : (
+                <motion.a
+                  key={link.name}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 + 0.2 }}
+                  className="text-slate-400 font-medium hover:text-white transition-all duration-300 font-manrope relative group text-sm lg:text-base"
+                  href={getHref(link.href)}
+                >
+                  {link.name}
+                  <motion.span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-container group-hover:w-full transition-all duration-300"
+                  />
+                </motion.a>
+              )
             ))}
           </div>
 
@@ -98,17 +123,28 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-2xl font-bold text-slate-300 hover:text-white transition-colors"
-                >
-                  {link.name}
-                </motion.a>
+                link.isRouter ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-2xl font-bold text-slate-300 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <motion.a
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    href={getHref(link.href)}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-2xl font-bold text-slate-300 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </motion.a>
+                )
               ))}
               <motion.button
                 initial={{ opacity: 0, x: -20 }}

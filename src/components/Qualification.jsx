@@ -29,15 +29,15 @@ const Qualification = () => {
   }, []);
 
   const experiences = [
-    { title: 'Freelance - Full-Stack Engineer', company: 'Upwork', date: '2024 - Present' },
-    { title: 'Galactic Problem Solver', company: 'NASA Space Apps Challenge', date: 'Oct 5-6, 2024' },
-    { title: 'Full-Stack Developer', company: 'Blockchain Olympiad Bangladesh', date: 'Jun 7 - Aug 29' },
+    { title: 'Member Secretary At Computer And Communication Engineering Club', company: 'International Islamic University Chittagong', date: 'Spring 2026 - Present' },
+    { title: 'Problem Solver', company: 'Codeforce, CodeChef, HackerRank', date: 'Spring: 2024 - Present' },
+    { title: 'Full-Stack Developer', company: 'Upwork, Freelancer', date: 'Spring: 2024 - Present' },
   ];
 
   const education = [
-    { title: 'Development Executive', company: 'EWU - Computer Programming Club', date: '2022 - Present' },
-    { title: 'Full-Stack Developer', company: 'Cisco IoT Hackathon', date: 'Nov 2, 2024' },
-    { title: 'Full-Stack Developer', company: 'EWU National Robofest', date: 'Nov 9, 2024' },
+    { title: 'B.Sc. Engg. In Computer and Communication Engineering', company: 'International Islamic University Chittagong', date: 'Spring: 2024 - Autumn: 2027' },
+    { title: 'Higher Secondary School Certificate', company: 'Iqbal Memorial Govt. College', date: 'Nov 2, 2024' },
+    { title: 'Secondary School Certificate', company: 'Jamidar Hat Begum Nurunnahar High School', date: 'Nov 9, 2024' },
   ];
 
   return (
